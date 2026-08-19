@@ -1,3 +1,4 @@
+import BackendFetcher from './BackendFetcher';
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
@@ -1851,6 +1852,7 @@ export default function RangeConsoleApp() {
               </section>
             );
           })}
+          <BackendFetcher />
         </main>
       </div>
 

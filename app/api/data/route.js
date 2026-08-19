@@ -10,7 +10,7 @@ export async function GET() {
     const state = await getAppState();
     return NextResponse.json(state, {
       headers: {
-        'Cache-Control': 'no-store, max-age=0'
+        'Cache-Control': 'no-store, max-age=0',
          'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',

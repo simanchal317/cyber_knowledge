@@ -1,5 +1,6 @@
-import BackendFetcher from './BackendFetcher';
 'use client';
+
+import BackendFetcher from './BackendFetcher';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { 

@@ -11,6 +11,9 @@ export async function GET() {
     return NextResponse.json(state, {
       headers: {
         'Cache-Control': 'no-store, max-age=0'
+         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
     });
   } catch (err) {
@@ -41,4 +44,15 @@ export async function POST(request) {
     console.error('[API /api/data POST error]', err);
     return NextResponse.json({ error: 'Failed to persist state' }, { status: 500 });
   }
+}
+
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
 }

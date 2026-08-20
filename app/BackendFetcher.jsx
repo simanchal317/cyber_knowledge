@@ -3,11 +3,18 @@ import { useEffect } from 'react';
 
 export default function BackendFetcher() {
   useEffect(() => {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    let API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     async function getData() {
       try {
-        const response = await fetch(`${API_URL}/api/data`);
+        // Strip trailing slash if present
+        const baseUrl = API_URL.replace(/\/$/, '');
+        const response = await fetch(`${baseUrl}/api/data`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const result = await response.json();
         console.log("Backend response:", result);
       } catch (error) {
@@ -18,5 +25,5 @@ export default function BackendFetcher() {
     if (API_URL) getData();
   }, []);
 
-  return null; // Runs in background, adds nothing to the UI
+  return null;
 }

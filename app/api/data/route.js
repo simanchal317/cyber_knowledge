@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getAppState, saveAppState } from '../../../lib/db';
-import { validateAdminRequest } from '../../../lib/auth';
+import { getAppState, saveAppState, validateAdminRequest } from '@/lib/db'; // adjust path to match your db file if needed
 
-// Ensure fresh data on every request
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
@@ -11,7 +9,7 @@ export async function GET() {
     return NextResponse.json(state, {
       headers: {
         'Cache-Control': 'no-store, max-age=0',
-         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
